@@ -5,7 +5,8 @@ class Counter extends React.Component {
         count: 0,
         address: {
             street: ""
-        }
+        },
+        tags: ['tag1', 'tag2', 'tag3']
     };
 
     styles = {
@@ -13,14 +14,21 @@ class Counter extends React.Component {
         fontWeight: "bold"
     };
 
+ 
     render() { 
-       let classes = this.getClasses();
         return (
-        <React.Fragment>
-            <span style={this.styles} className={classes}>{this.formatCount()}</span>
-            <button style={{fontSize: 16}} className="btn btn-secondary btn-sm">Increment</button>
-        </React.Fragment>
+            <React.Fragment>
+                <span style={this.styles} className={this.getClasses()}>{this.formatCount()}</span>
+                <button style={{fontSize: 16}} onClick={this.increment} className="btn btn-secondary btn-sm">Increment</button>
+                <ul>
+                    {this.state.tags.map(t => <li key={t}>{t}</li>)}
+                </ul>
+            </React.Fragment>
         );
+    }
+
+    increment() {
+        console.log('About to increment');
     }
 
     getClasses() {
@@ -31,7 +39,7 @@ class Counter extends React.Component {
 
     formatCount() {
         const {count, address} = this.state;
-        return count == 0 ? 'Zero' : count;
+        return count === 0 ? 'Zero' : count;
     }
 }
  
