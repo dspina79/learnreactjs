@@ -6,7 +6,20 @@ class Counter extends React.Component {
         address: {
             street: ""
         },
-        tags: ['tag1', 'tag2', 'tag3']
+        tags: [
+            {
+                id: "tag1",
+                name: "Action"
+            },
+            {
+                id: "tag2",
+                name: "Sci-Fi"
+            },            
+            {
+                id: "tag3",
+                name: "Suspense"
+            },
+        ]
     };
 
     styles = {
@@ -21,7 +34,7 @@ class Counter extends React.Component {
                 <span style={this.styles} className={this.getClasses()}>{this.formatCount()}</span>
                 <button style={{fontSize: 16}} onClick={this.increment} className="btn btn-secondary btn-sm">Increment</button>
                 <ul>
-                    {this.state.tags.map(t => <li key={t}>{t}</li>)}
+                    {this.state.tags.map(t => <li key={t.id}>{t.name}</li>)}
                 </ul>
             </React.Fragment>
         );
