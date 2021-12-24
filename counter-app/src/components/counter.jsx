@@ -35,7 +35,8 @@ class Counter extends React.Component {
 
     handleIncrement() {
         console.log('About to increment');
-        this.state.count++;
+        // set the state value using setState method
+        this.setState({count: this.state.count + 1});
     }
 
     getClasses() {
