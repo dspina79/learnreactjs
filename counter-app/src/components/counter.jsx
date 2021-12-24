@@ -16,6 +16,7 @@ class Counter extends React.Component {
     constructor() {
         super();
         this.handleIncrement = this.handleIncrement.bind(this);
+        this.handleDecriment = this.handleDecriment.bind(this);
     }
 
     renderTags() {
@@ -29,14 +30,18 @@ class Counter extends React.Component {
             <React.Fragment>
                 <span style={this.styles} className={this.getClasses()}>{this.formatCount()}</span>
                 <button style={{fontSize: 16}} onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
+                <button style={{fontSize: 16}} onClick={this.handleDecriment} className="btn btn-warning btn-sm">Decrement</button>
             </React.Fragment>
         );
     }
 
     handleIncrement() {
-        console.log('About to increment');
         // set the state value using setState method
         this.setState({count: this.state.count + 1});
+    }
+
+    handleDecriment() {
+        if (this.state.count > 0) this.setState({count: this.state.count - 1});
     }
 
     getClasses() {
