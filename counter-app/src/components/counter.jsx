@@ -5,16 +5,18 @@ class Counter extends React.Component {
         count: 0,
         address: {
             street: ""
-        },
-        tags: [
-            
-        ]
+        }
     };
 
     styles = {
         fontSize: 10,
         fontWeight: "bold"
     };
+
+    constructor() {
+        super();
+        this.handleIncrement = this.handleIncrement.bind(this);
+    }
 
     renderTags() {
         if (this.state.tags.length === 0) return <p>You need to add a tag.</p>
@@ -25,12 +27,27 @@ class Counter extends React.Component {
     render() { 
         return (
             <React.Fragment>
-                {this.state.tags.length === 0 && "Click to add some items to the cart."}                
-                {this.renderTags()}
+                <span style={this.styles} className={this.getClasses()}>{this.formatCount()}</span>
+                <button style={{fontSize: 16}} onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
             </React.Fragment>
         );
     }
 
+    handleIncrement() {
+        console.log('About to increment');
+        this.state.count++;
+    }
+
+    getClasses() {
+        let classes = "badge m-2 ";
+        classes += (this.state.count === 0) ? "alert-warning" : "alert-primary";
+        return classes;
+    }
+
+    formatCount() {
+        const {count, address} = this.state;
+        return count === 0 ? 'Zero' : count;
+    }
 }
  
 export default Counter;
