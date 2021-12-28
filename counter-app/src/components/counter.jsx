@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Counter extends React.Component {
     state = {
-        count: 0,
+        count: this.props.value,
         address: {
             street: ""
         }
@@ -13,8 +13,9 @@ class Counter extends React.Component {
         fontWeight: "bold"
     };
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log(this.props);
         this.handleIncrement = this.handleIncrement.bind(this);
         this.handleDecriment = this.handleDecriment.bind(this);
     }
