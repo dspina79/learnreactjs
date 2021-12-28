@@ -29,6 +29,7 @@ class Counter extends React.Component {
     render() { 
         return (
             <React.Fragment>
+                {this.props.children}
                 <span style={this.styles} className={this.getClasses()}>{this.formatCount()}</span>
                 <button style={{fontSize: 16}} onClick={ () => this.handleIncrement({id: 1})} className="btn btn-secondary btn-sm">Increment</button>
                 <button style={{fontSize: 16}} onClick={ () => this.handleDecriment({id : 1})} className="btn btn-warning btn-sm">Decrement</button>
