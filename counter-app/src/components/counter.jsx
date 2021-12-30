@@ -33,9 +33,11 @@ class Counter extends React.Component {
                 <span style={this.styles} className={this.getClasses()}>{this.formatCount()}</span>
                 <button style={{fontSize: 16}} onClick={ () => this.handleIncrement({id: 1})} className="btn btn-secondary btn-sm">Increment</button>
                 <button style={{fontSize: 16}} onClick={ () => this.handleDecriment({id : 1})} className="btn btn-warning btn-sm">Decrement</button>
+                <button style={{fontSize: 16}} onClick={this.props.onDelete} className="btn btn-danger btn-sm">Delete</button>
             </React.Fragment>
         );
     }
+
 
     handleIncrement(product) {
         console.log(product);
