@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Counter extends React.Component {
     state = {
-        count: this.props.value,
+        count: this.props.counter.value,
         address: {
             street: ""
         }
@@ -33,7 +33,7 @@ class Counter extends React.Component {
                 <span style={this.styles} className={this.getClasses()}>{this.formatCount()}</span>
                 <button style={{fontSize: 16}} onClick={ () => this.handleIncrement({id: 1})} className="btn btn-secondary btn-sm">Increment</button>
                 <button style={{fontSize: 16}} onClick={ () => this.handleDecriment({id : 1})} className="btn btn-warning btn-sm">Decrement</button>
-                <button style={{fontSize: 16}} onClick={() => this.props.onDelete(this.props.id)} className="btn btn-danger btn-sm">Delete</button>
+                <button style={{fontSize: 16}} onClick={() => this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-sm">Delete</button>
             </React.Fragment>
         );
     }
