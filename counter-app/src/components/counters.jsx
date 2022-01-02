@@ -18,8 +18,14 @@ class Counters extends React.Component {
     }
 
     handleReset = () => {
-        this.setState({counters: []});
+        const resetCounters = this.state.counters.map(c => {
+            c.value = 0;
+            return c;
+        });
+        console.log(resetCounters);
+        this.setState({resetCounters});
     }
+
 
     render() { 
         return <div>
