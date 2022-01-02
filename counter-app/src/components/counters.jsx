@@ -27,21 +27,22 @@ class Counters extends React.Component {
     }
 
     handleIncrement = (counter) => {
-        const counters = [...this.state.counters];
-        const index = counters.indexOf(counter);
-        counters[index] = {...counter};
-        counters[index].value++;
-        this.setState({counters});
+        this.handleCounterChange(counter, 1);
     }
 
     handleDecrement = (counter) => {
+        this.handleCounterChange(counter, -1);
+    }
+
+    handleCounterChange = (counter, incrementAmount) => {
         const counters = [...this.state.counters];
         const index = counters.indexOf(counter);
         counters[index] = {...counter};
-        if (counters[index].value > 0) {
-            counters[index].value--;
+
+        if ((incrementAmount < 0 && counters[index].value > 0) || incrementAmount > 0) {
+            counters[index].value += incrementAmount;
+            this.setState({counters});
         }
-        this.setState({counters});
     }
 
     render() { 
