@@ -10,8 +10,9 @@ class CounterAdder extends React.Component {
 
     render() { 
         return <React.Fragment>
-            <input id="adder" key="adder" type="text" maxLength="20"></input>
-            <button onClick={() => this.props.onAdd(document.getElementById("adder").value)}>Add</button>
+            <label for="adder">Product Name</label>
+            <input className="form-control" id="adder" key="adder" type="text" maxLength="20"></input>
+            <button className="btn btn-primary btn-sm" onClick={() => this.props.onAdd(document.getElementById("adder").value)}>Add</button>
         </React.Fragment>;
     }
 }
