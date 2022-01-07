@@ -2,7 +2,7 @@ import './App.css';
 import React, {Component} from 'react';
 import NavBar from './components/navbar';
 import Counters from './components/counters';
-
+import CounterAdder from './components/counteradder';
 
 
 class App extends React.Component {
@@ -13,6 +13,27 @@ class App extends React.Component {
         {id: 3, value: 0, title: "Counter C"},
         {id: 4, value: 0, title: "Counter D"}
     ]
+  }
+
+  handleAdd = (productName) => {
+    console.log("Adding " + productName)
+    if (productName !== "") {
+      let newId = 0;
+      for(var i = 0; i < this.state.counters.length; i++) {
+          const counter = this.state.counters[0];
+          if (counter.id > newId) {
+              newId = counter.Id;
+          }
+      }
+
+      newId++;
+
+      const newCounter = {id: newId, value: 1, title: productName};
+      const newCounters = this.state.counters;
+      newCounters.push(newCounter);
+      console.log(newCounters);
+      this.setState({counters: newCounters});
+    }
   }
 
   handleDelete = (counterId) => {
@@ -54,6 +75,7 @@ class App extends React.Component {
 
       <React.Fragment>
       <NavBar counters={this.state.counters} />
+      <CounterAdder onAdd={this.handleAdd} />
       <main className="container">
         <Counters onIncrement={this.handleIncrement} onDecrement={this.handleDecrement}
         onDelete={this.handleDelete}
