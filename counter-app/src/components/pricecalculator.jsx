@@ -3,7 +3,13 @@ import React, { Component } from 'react';
 class PriceCalculator extends React.Component {
     
     calculateTotalsWithShipping() {
-        return 0;
+        const rateItem = 0.23;
+        let totalItems = 0;
+        for (counter in this.props.counter) {
+            totalItems += counter.value;
+        }
+
+        return totalItems * rateItem;
     }
     
     render() { 
